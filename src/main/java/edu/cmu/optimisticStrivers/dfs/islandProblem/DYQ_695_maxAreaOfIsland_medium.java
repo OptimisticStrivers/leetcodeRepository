@@ -30,4 +30,16 @@ public class DYQ_695_maxAreaOfIsland_medium {
         return 1 + dfs(grid,i-1,j)+dfs(grid,i,j-1)+dfs(grid,i+1,j)+dfs(grid,i,j+1);
     }
 
+    public static void main(String[] args) {
+        String a = null;
+        System.out.println(a);
+        System.out.println( a == null);
+//        System.out.println(a.length());
+        String b = "";
+        System.out.println(b.length());
+        System.out.println(b==null); //false
+        System.out.println(b.equals("")); //true
+    }
+
+
 }
