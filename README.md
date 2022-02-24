@@ -1,0 +1,1 @@
+A hero is a man who has the courage to dominate his own destiny.
