@@ -1,4 +1,5 @@
-package Array;
+package edu.cmu.optimisticStrivers.array;
+
 
 /**
  * @ClassName: Lc26RemoveDuplicatesfromSortedArray
@@ -7,7 +8,7 @@ package Array;
  * @Date 2/18/22 10:22 am
  * @Version 1.0
  */
-public class Lc26RemoveDuplicatesfromSortedArray {
+public class CXY_26_RemoveDuplicatesfromSortedArray_easy {
     public int removeDuplicates(int[] nums) {
         int A = 0;
         for(int B = 0; B < nums.length; B++){
