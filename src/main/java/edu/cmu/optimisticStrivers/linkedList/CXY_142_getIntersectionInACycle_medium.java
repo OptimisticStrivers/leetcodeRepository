@@ -1,5 +1,7 @@
 package edu.cmu.optimisticStrivers.linkedList;
 
+import java.util.HashSet;
+
 /**
  * @ClassName: CXY_142_getIntersectionInACycle_medium
  * @Description: todo
@@ -34,31 +36,31 @@ public class CXY_142_getIntersectionInACycle_medium {
      }
 
      //借鉴 160 题
-    public static ListNode detectCycle1(ListNode head) {
-        if(head==null || head.next==null) return null;
-        boolean hasCycle = false;
-        ListNode fast = head;
-        ListNode slow = head;
-        while(fast!=null){
-            fast = fast.next;
-            fast = fast==null? null:fast.next;
-            slow = slow.next;
-            if(slow==fast){
-                hasCycle = true;
-                break;
-            }
-        }
-        if(!hasCycle) return null;
-        ListNode intersection = slow; //fast
-        ListNode head2 = intersection.next;
-        ListNode pointer2 = intersection.next;
-        intersection.next = null;
-        ListNode head1 = head;
-        ListNode pointer1 = head;
-        while(pointer1 != pointer2){
-            pointer1= pointer1==null?head2:pointer1.next;
-            pointer2= pointer2==null?head1:pointer2.next;
-        }
-        return pointer1;
-    }
+//    public static ListNode detectCycle1(ListNode head) {
+//        if(head==null || head.next==null) return null;
+//        boolean hasCycle = false;
+//        ListNode fast = head;
+//        ListNode slow = head;
+//        while(fast!=null){
+//            fast = fast.next;
+//            fast = fast==null? null:fast.next;
+//            slow = slow.next;
+//            if(slow==fast){
+//                hasCycle = true;
+//                break;
+//            }
+//        }
+//        if(!hasCycle) return null;
+//        ListNode intersection = slow; //fast
+//        ListNode head2 = intersection.next;
+//        ListNode pointer2 = intersection.next;
+//        intersection.next = null;
+//        ListNode head1 = head;
+//        ListNode pointer1 = head;
+//        while(pointer1 != pointer2){
+//            pointer1= pointer1==null?head2:pointer1.next;
+//            pointer2= pointer2==null?head1:pointer2.next;
+//        }
+//        return pointer1;
+//    }
 }
