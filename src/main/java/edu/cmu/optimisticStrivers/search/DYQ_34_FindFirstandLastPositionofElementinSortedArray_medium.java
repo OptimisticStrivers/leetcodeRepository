@@ -1,5 +1,9 @@
 package edu.cmu.optimisticStrivers.search;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * @ClassName: DYQ_34_FindFirstandLastPositionofElementinSortedArray_medium
  * @Description: todo
@@ -36,9 +40,17 @@ public class DYQ_34_FindFirstandLastPositionofElementinSortedArray_medium {
                     left = mid + 1;
                 }
             }
+
         }
 
         return res;
+    }
+
+    public static void main(String[] args) {
+        List<List<Integer>> list = new ArrayList<>();
+        Integer[] a = {1,3};
+        list.add(Arrays.asList(a));
+
     }
 
 }

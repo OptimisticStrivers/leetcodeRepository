@@ -36,4 +36,8 @@ public class DYQ_200_numberOfIslands_medium {
         dfs(grid, row, column + 1);
         dfs(grid, row, column - 1);
     }
+
+
+    //bfs
+    //行和列可以算出唯一一个值
 }

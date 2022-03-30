@@ -1,5 +1,6 @@
 package edu.cmu.optimisticStrivers.presum;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 /**
@@ -10,6 +11,12 @@ import java.util.HashMap;
  * @Version 1.0
  */
 public class DYQ_560_subarraySum_medium {
+
+//    子串，子数组：必须连续
+//
+//    子序列：可以不连续
+
+
 
 //    560. 和为 K 的子数组
 //   leetcode 930. 和相同的二元子数组

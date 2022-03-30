@@ -26,8 +26,9 @@ public class DYQ_47_Permutation_medium {
             return;
         }
         for (int i = 0; i < size; i++) {
-//            if (i > 0 && nums[i] == nums[i - 1] && !used[i - 1]) {1
-            if (i > 0 && nums[i] == nums[i - 1] ) {
+//            第三个条件必须有，只有前面的一个没有被用过，你才比前后。前面的被用过的时候，后面的即时一样也可以用
+            if (i > 0 && nums[i] == nums[i - 1] && !used[i - 1]) {
+//            if (i > 0 && nums[i] == nums[i - 1] ) {
                 continue;
             }
             if (!used[i]) {

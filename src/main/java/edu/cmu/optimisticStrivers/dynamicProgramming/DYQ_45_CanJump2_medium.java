@@ -1,5 +1,7 @@
 package edu.cmu.optimisticStrivers.dynamicProgramming;
 
+import java.util.Scanner;
+
 /**
  * @ClassName: DYQ_45_CanJump2_medium
  * @Description: todo
@@ -28,8 +30,19 @@ public class DYQ_45_CanJump2_medium {
     }
 
 
-    public static void main(String[] args) {
-        int[] test = new int[]{2,0,0,1,3};
-        jump(test);
-    }
+//    public static void main(String[] args) {
+////        int[] test = new int[]{2,0,0,1,3};
+////        jump(test);
+//        Scanner scanner = new Scanner(System.in);
+////        System.out.println(scanner.nextInt());
+////        System.out.println(scanner.next()); //必须吃到除了空格和换行
+//
+//        System.out.println(scanner.next());
+////        System.out.println(scanner.nextInt());
+////        System.out.println(scanner.next());
+//
+//
+//
+//
+//    }
 }
