@@ -7,7 +7,7 @@ public class DYQ_bucketSort {
 
 
 //    https://blog.csdn.net/qq_35344198/article/details/107378626
-
+//    桶排序（Bucket sort）是计数排序算法的升级版，将数据分到有限数量的桶子里，然后每个桶再分别排序
 
     public static void main(String[] args) {
         DYQ_bucketSort dyq_bucketSort = new DYQ_bucketSort();
