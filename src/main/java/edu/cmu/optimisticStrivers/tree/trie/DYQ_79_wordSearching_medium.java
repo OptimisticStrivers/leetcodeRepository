@@ -1,4 +1,4 @@
-package edu.cmu.optimisticStrivers;
+package edu.cmu.optimisticStrivers.tree.trie;
 
 public class DYQ_79_wordSearching_medium {
 

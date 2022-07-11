@@ -1,4 +1,4 @@
-package edu.cmu.optimisticStrivers;
+package edu.cmu.optimisticStrivers.tree.trie;
 
 public class DYQ_208_trie_medium {
 
@@ -61,7 +61,59 @@ public class DYQ_208_trie_medium {
         dyq_208_trie_medium.insert("apple");
         System.out.println(dyq_208_trie_medium.search("apple"));
         System.out.println(dyq_208_trie_medium.search("app"));
+    }
 
 
+
+
+    //TreeNode形式 存 trie
+    //优劣对比 工程应用
+    //https://mp.weixin.qq.com/s?__biz=MzU4NDE3MTEyMA==&mid=2247488490&idx=1&sn=db2998cb0e5f08684ee1b6009b974089&chksm=fd9cb8f5caeb31e3f7f67dba981d8d01a24e26c93ead5491edb521c988adc0798d8acb6f9e9d&token=1232059512&lang=zh_CN#rd
+    //至于一些诸如「联想输入」、「模糊匹配」、「全文检索」的典型场景在工程主要是通过 ES (ElasticSearch) 解决的  而 ES 的实现则主要是依靠「倒排索引」。
+    //倒排索引  https://blog.csdn.net/qq_43403025/article/details/114779166
+
+
+    class TrieNode {
+        boolean end;
+        TrieNode[] tns = new TrieNode[26];
+    }
+
+    TrieNode root = new TrieNode();
+
+
+    public void insert1(String s) {
+        TrieNode temp = root;
+        for (int i = 0; i < s.length(); i++) {
+            int c = s.charAt(i)-'a';
+            if(temp.tns[c]==null){
+                temp.tns[c] = new TrieNode();
+            }
+            temp = temp.tns[c];
+        }
+        temp.end = true;
+    }
+
+    public boolean search1(String s) {
+        TrieNode temp = root;
+        for (int i = 0; i < s.length(); i++) {
+            int c = s.charAt(i)-'a';
+            if(temp.tns[c]==null){
+                return false;
+            }
+            temp = temp.tns[c];
+        }
+        return temp.end;
+    }
+
+    public boolean startsWith1(String s) {
+        TrieNode temp = root;
+        for (int i = 0; i < s.length(); i++) {
+            int c = s.charAt(i)-'a';
+            if(temp.tns[c]==null){
+                return false;
+            }
+            temp = temp.tns[c];
+        }
+        return true;
     }
 }
