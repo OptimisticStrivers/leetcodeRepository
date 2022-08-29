@@ -1,4 +1,4 @@
-package edu.cmu.optimisticStrivers;
+package edu.cmu.optimisticStrivers.slidingWindow;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -31,7 +31,7 @@ public class DYQ_219_containsDuplicate2_easy {
         int left = 0;
         int right = 0;
         for (; right < nums.length; right++) {
-            while(right-left>k){
+            while(right-left>k){ //滑动窗口最大就是k+1个元素
                 set.remove(nums[left++]);
             }
             if(!set.add(nums[right])){ //加不进去 说明已经有了
@@ -46,7 +46,7 @@ public class DYQ_219_containsDuplicate2_easy {
         Set<Integer> set = new HashSet<Integer>();
         int length = nums.length;
         for (int i = 0; i < length; i++) {
-            if (i > k) {
+            if (i > k) { // 让滑动窗口内保持只有k+1个元素  多的滚蛋
                 set.remove(nums[i - k - 1]);
             }
             if (!set.add(nums[i])) {
