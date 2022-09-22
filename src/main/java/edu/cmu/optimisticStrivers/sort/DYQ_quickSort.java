@@ -40,7 +40,8 @@ public class DYQ_quickSort {
         //把基准换掉
         nums[begin] = nums[l];
         nums[l] = pivot;
-        quickSort(nums, l + 1, end);
+        quickSort(nums, l + 1, end); //这个对应了 21 行 必须有> 号，比如如果两个元素 1，2进quicksort
+            //这时候 l就是1了    1+1 =2 > end ==1
         quickSort(nums, begin, l - 1);
     }
 

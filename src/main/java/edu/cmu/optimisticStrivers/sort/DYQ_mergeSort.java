@@ -55,55 +55,66 @@ public class DYQ_mergeSort {
 //    }
 
     public static int[] sortArray(int[] nums) {
-        if(nums == null || nums.length == 0) return null;
+        if (nums == null || nums.length == 0) return null;
         int[] swapArray = new int[nums.length];
-        mergeSort(nums, 0, nums.length-1, swapArray);
+        System.out.println(nums.length - 1);
+        mergeSort(nums, 0, nums.length - 1, swapArray);
         return nums;
     }
 
-    public static void mergeSort(int[] nums, int begin, int end , int[] swapArray){
-        while(begin<end){
-            int mid = (begin+end)/2;
-            mergeSort(nums, begin, mid, swapArray);
-            mergeSort(nums, mid+1, end, swapArray);
-            merge(nums, begin, mid+1, end, swapArray);
+    public static void mergeSort(int[] nums, int begin, int end, int[] swapArray) {
+//        while(begin<end){
+//            int mid = (begin+end)/2;
+//            mergeSort(nums, begin, mid, swapArray);
+//            mergeSort(nums, mid+1, end, swapArray);
+//            merge(nums, begin, mid+1, end, swapArray);
+//        }
+        if (begin >= end) {
+            return;
         }
+        int mid = (begin + end) / 2;
+        mergeSort(nums, begin, mid, swapArray);
+        mergeSort(nums, mid + 1, end, swapArray);
+        System.out.println("begin " + begin + " mid " + (mid + 1) + " end " + end);
+        merge(nums, begin, mid + 1, end, swapArray);
     }
 
 
-    public static void merge(int[] nums, int begin, int mid, int end, int[] swapArray){
+    public static void merge(int[] nums, int begin, int mid, int end, int[] swapArray) {
         int i = begin;
         int j = mid;
         int s = begin;
-        while(i<mid && j<=end){
-            if(nums[i]<=nums[j]){
+        while (i < mid && j <= end) {
+            if (nums[i] <= nums[j]) {
                 swapArray[s++] = nums[i++];
-            }else{
+            } else {
                 swapArray[s++] = nums[j++];
             }
         }
-        while(i<mid){
+        while (i < mid) {
             swapArray[s++] = nums[i++];
         }
-        while(j<=end){
+        while (j <= end) {
             swapArray[s++] = nums[j++];
         }
-        // for(int k = 0; k < end-begin+1; k++){
-        //     nums[k+begin] = swapArray[k];
-        // }
-        // s = 0;
-        // while(begin<=end){
-        //     nums[begin++] = swapArray[s++];
-        // }
 
-        while(begin<=end){
-            nums[begin++] = swapArray[begin];
+//        System.out.println(begin);
+        while (begin <= end) {
+//            System.out.println("begin " + begin);
+//            nums[begin++] = swapArray[begin]; // woc 这是一个大 bug       后面的begin越界
+//            nums[++begin] = swapArray[begin]; //更不对
+//            nums[begin] = swapArray[++begin]; //更不对
+            nums[begin] = swapArray[begin++]; //不会有问题
+//
+//            nums[begin] = swapArray[begin];
+//            begin++;
+
         }
 
     }
 
     public static void main(String[] args) {
-        int[] a = sortArray(new int[]{5,2,3,1});
+        int[] a = sortArray(new int[]{5, 2, 3, 1});
         for (int i = 0; i < a.length; i++) {
             System.out.println(a[i]);
         }
