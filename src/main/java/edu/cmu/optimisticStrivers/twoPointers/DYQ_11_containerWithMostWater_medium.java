@@ -1,6 +1,6 @@
 package edu.cmu.optimisticStrivers.twoPointers;
 
-public class DYQ_11_containerWithMostWater_medium {
+public class    DYQ_11_containerWithMostWater_medium {
 
 //
 //面积取决于短板。
@@ -17,8 +17,8 @@ public class DYQ_11_containerWithMostWater_medium {
         int left = 0, right = height.length - 1;
         int res = Integer.MIN_VALUE;
         while (left < right) {
-            res = height[left]<height[right]?
-                    Math.max(res,(right-left)*height[left++]):Math.max(res,(right-left)*height[right--]);
+            res = height[left] < height[right] ?
+                    Math.max(res, (right - left) * height[left++]) : Math.max(res, (right - left) * height[right--]);
         }
         return res;
     }

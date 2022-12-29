@@ -36,7 +36,7 @@ public class DYQ_jianzhi2_084_permutation {
                 continue;
             }
             //第三个条件必须有，只有前面的一个没有被用过，你才比前后。前面的被用过的时候，后面的即时一样也可以用
-            if (j > 0 && nums[j - 1] == nums[j] && visited[j-1]) {
+            if (j > 0 && nums[j - 1] == nums[j] && !visited[j-1]) {
                 continue;
             }
 

@@ -10,7 +10,7 @@ package edu.cmu.optimisticStrivers.sort;
 public class DYQ_912_sortAnArray_medium {
     //快排的关键就是，挖坑+分治
     public int[] sortArray(int[] nums) {
-//        quickSort(nums, 0, nums.length - 1);
+//        columns(nums, 0, nums.length - 1);
         return nums;
     }
 //    public void quickSort(int[] nums, int begin, int end) {

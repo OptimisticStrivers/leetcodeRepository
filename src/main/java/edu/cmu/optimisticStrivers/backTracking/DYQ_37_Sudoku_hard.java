@@ -58,7 +58,8 @@ public class DYQ_37_Sudoku_hard {
                     rows[i][num - 1] = true;
                     columns[j][num - 1] = true;
                     nines[i / 3][j / 3][num - 1] = true;
-                    board[i][j] = (char) num; //有问题
+//                    board[i][j] = (char) num; //有问题
+                    board[i][j] = (char) ('0' + k);
                     if (backtrack(board, rows, columns, nines, i, j + 1)) {
                         return true;
                     }
@@ -74,6 +75,26 @@ public class DYQ_37_Sudoku_hard {
         }
 
         return true;
+    }
+
+
+    public static void main(String[] args) {
+
+        int a = '9'-'0';
+        System.out.println(a);
+//        char c = (char)a;
+        char c = (char) a;
+        System.out.println(c);
+//        int a = 1;
+//        System.out.println((char)a);
+//        int d = 2;
+//        System.out.println((char)d);
+//        int f = 3;
+//        System.out.println((char)f);
+////        System.out.println((char)2);
+//        int b = 1;
+//        char c  = (char) b;
+//        System.out.println(c);
     }
 }
 

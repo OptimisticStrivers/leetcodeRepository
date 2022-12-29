@@ -11,7 +11,7 @@ import java.util.HashMap;
  */
 public class DYQ_416_CanPartition_medium {
     //0-1背包存在性问题
-    //https://leetcode-cn.com/problems/partition-equal-subset-sum/solution/0-1-bei-bao-wen-ti-xiang-jie-zhen-dui-ben-ti-de-yo/
+        //https://leetcode-cn.com/problems/partition-equal-subset-sum/solution/0-1-bei-bao-wen-ti-xiang-jie-zhen-dui-ben-ti-de-yo/
 
     //传统dfs，不要for循环，因为这种不太好return
     public boolean canPartition(int[] nums) {

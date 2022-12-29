@@ -11,7 +11,6 @@ public class DYQ_136_singleNumber_easy {
 
 
     public int singleNumber(int[] nums) {
-
         int res = 0;
         for (int num : nums) {
             res  ^= num;

@@ -88,22 +88,22 @@ class Morpher1 {
         return morph;
     }
 
-    public static Morph replaceVowel(Morph morph, String word) {
-        if(word.contains("i")){
-            morph.gender="F";
-            morph.number=word.contains("ii")?"P":"S";
-            word=word.replace("ii","e");
-            word=word.replace("i","e");
-        } else if(word.contains("o")){
-            morph.gender="M";
-            morph.number=word.contains("oo")?"P":"S";
-
-        } else{
-            morph.gender="N";
-            morph.number=word.contains("ee")?"P":"S";
-            word=word.replace("ee","e");
-        }
-        morph.root=word;
-        return morph;
-    }
+//    public static Morph replaceVowel(Morph morph, String word) {
+//        if(word.contains("i")){
+//            morph.gender="F";
+//            morph.number=word.contains("ii")?"P":"S";
+//            word=word.replace("ii","e");
+//            word=word.replace("i","e");
+//        } else if(word.contains("o")){
+//            morph.gender="M";
+//            morph.number=word.contains("oo")?"P":"S";
+//
+//        } else{
+//            morph.gender="N";
+//            morph.number=word.contains("ee")?"P":"S";
+//            word=word.replace("ee","e");
+//        }
+//        morph.root=word;
+//        return morph;
+//    }
 }

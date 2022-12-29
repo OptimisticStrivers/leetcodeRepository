@@ -19,7 +19,7 @@ public class CXY_142_getIntersectionInACycle_medium {
          ListNode slow = head;
          while(fast!=null){
              fast = fast.next;
-             fast = fast==null? null:fast.next;
+             fast = fast==null ? null:fast.next;
              slow = slow.next;
              if(slow==fast){
                 hasCycle = true;

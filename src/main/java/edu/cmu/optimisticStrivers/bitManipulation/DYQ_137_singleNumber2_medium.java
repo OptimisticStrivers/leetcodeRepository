@@ -57,10 +57,55 @@ public class DYQ_137_singleNumber2_medium {
         int res = 0, m = 3;
         for (int i = 0; i < 32; i++) {
             res <<= 1;
+//            >>是右移 和<<具有同样的道理
+//            只不过右移过程中溢出时，低位会舍弃，高位补零
             res |= bits[31 - i] % m; //末尾0去 OR bit 就是bit 本身
         }
         return res;
     }
+//    ut
+//   3 1
+//           1 1 1 1 1 1 1 1 1 1
+//          1 1 1 1 1 1 1 1 1 1
+//         1 1 1 1 1 1 1 1 1 1
 
 
+    public static void main(String[] args) {
+        System.out.println(Integer.toBinaryString(-3));
+        System.out.println(Integer.toBinaryString(2));
+
+
+    }
+
+
+
+// [2,-3,-3,-3]
+
+    // [2,2,2,-3]
+
+    //照搬的思想
+//    public int singleNumber(int[] nums) {
+//        int len = nums.length;
+//        int[] bits = new int[32];
+//        for(int num : nums){
+//            for(int i = 0; i<32; i++){
+//                int cur =  num & 1;
+//                num >>= 1; //无所谓 因为只是照搬 bits 到 bits数组里
+//                bits[i] += cur;
+//            }
+//        }
+//        for(int i = 0; i<32; i++){
+//            System.out.print(bits[31-i]+" ");
+//        }
+//
+//        int res = 0;
+//        for(int i = 0; i<32; i++){
+//            res <<= 1;
+//            int curDigit = bits[31-i];
+//            curDigit %= 3;
+//            res += curDigit;
+//        }
+//        return res;
+//
+//    }
 }

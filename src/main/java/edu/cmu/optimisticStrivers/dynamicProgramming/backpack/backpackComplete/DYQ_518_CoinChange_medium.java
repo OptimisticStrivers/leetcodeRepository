@@ -8,6 +8,10 @@ package edu.cmu.optimisticStrivers.dynamicProgramming.backpack.backpackComplete;
  * @Version 1.0
  */
 public class DYQ_518_CoinChange_medium {
+
+//    一文搞懂
+//    https://leetcode.cn/problems/coin-change/solution/yi-pian-wen-zhang-chi-tou-bei-bao-wen-ti-sq9n//**/
+//    https://leetcode.cn/problems/coin-change-ii/solution/by-flix-e1vv/
     public int change(int amount, int[] coins) {
         int[] dp = new int[amount+1];
         dp[0] = 1;

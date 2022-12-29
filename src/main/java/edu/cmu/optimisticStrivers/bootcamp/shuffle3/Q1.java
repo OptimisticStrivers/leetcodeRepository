@@ -13,6 +13,40 @@ public class Q1 {
 
     //anagram 相同字母异序词，易位构词，变位词
 
+
+    public static boolean areAnagrams(String A, String B) {
+
+        HashMap<Character, Integer> objectObjectHashMap = new HashMap<>();
+        for (char c : A.toCharArray()) {
+            if (c <= 'z' && c >= 'a') {
+                if (objectObjectHashMap.containsKey(c)) {
+                    int val = objectObjectHashMap.get(c);
+                    objectObjectHashMap.put(c, val + 1);
+                } else {
+                    objectObjectHashMap.put(c, 1);
+                }
+            }
+        }
+
+
+        for (char c : B.toCharArray()) {
+            if (c <= 'z' && c >= 'a') {
+                if(!objectObjectHashMap.containsKey(c)){
+                    return false;
+                }else{
+                    Integer integer = objectObjectHashMap.get(c);
+                    objectObjectHashMap.put(c,integer-1);
+                }
+            }
+        }
+        for (Character character : objectObjectHashMap.keySet()) {
+            if(objectObjectHashMap.get(character) != 0){
+                return false;
+            }
+        }
+        return true;
+    }
+
     //把所有 anagram 找到
     //并以 anagram 相邻顺序返回
     public String[] sort_all(String[] target) {
