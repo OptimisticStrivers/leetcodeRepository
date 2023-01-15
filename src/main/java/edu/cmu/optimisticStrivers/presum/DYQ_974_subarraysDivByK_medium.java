@@ -12,7 +12,6 @@ import java.util.Map;
  */
 public class DYQ_974_subarraysDivByK_medium {
 
-    public static int subarraysDivByK(int[] nums, int k) {
 //        nums = [4,5,0,-2,-3,1], k = 5
 
 //        二、同余定理
@@ -22,26 +21,27 @@ public class DYQ_974_subarraysDivByK_medium {
 //        3.余数的积决定积的余数。
 //        4.余数的幂决定幂的余数。
 
-
+    //和523有点不同 可以有负数 而且 一个value存数量 一个 存最远index
+    public static int subarraysDivByK(int[] A, int K) {
+        int sum = 0, result = 0;
         Map<Integer, Integer> map = new HashMap<>();
-        int res = 0;
-        int preSum = 0;
         map.put(0, 1);
-        for (int num : nums) {
-            preSum += num;
-            int remainder = (preSum % k + k) % k;
-            if (map.containsKey(remainder)) {
-                res += map.get(remainder);
-            }
-            map.put(remainder, map.getOrDefault(remainder, 0) + 1);
+        for (int n : A) {
+            sum += n;
+            int curMod = (sum % K + K) % K;
+//            [-1,2,9] 2 应该有两个满足条件的子数组 2 和 -1 2 9
+//            int curMod = sum % K; //-1的余数必须是1 才能 把 9和-1之间的2 掏出来
+            int preCount = map.getOrDefault(curMod, 0);
+            result += preCount;
+            map.put(curMod, preCount + 1);
         }
-        return res;
+        return result;
     }
 
     public static void main(String[] args) {
-//        int[] a = new int[]{4,5,0};
-        int[] a = new int[]{4, 5};
-        System.out.println(subarraysDivByK(a, 5));
+//        System.out.println(-1 % 2); //-1
+        int[] a = new int[]{-1, 2, 9};
+        System.out.println(subarraysDivByK(a, 2));
     }
 
 //    [4, 5, 0, -2, -3, 1],

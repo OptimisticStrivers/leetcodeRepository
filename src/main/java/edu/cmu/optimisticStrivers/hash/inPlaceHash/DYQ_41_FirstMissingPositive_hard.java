@@ -13,6 +13,42 @@ import java.util.Set;
  */
 public class DYQ_41_FirstMissingPositive_hard {
 
+    //这题主要就要求 O(n) 时间复杂度
+    //和 o(1) 的空间复杂度
+    //所以用原地hash
+    public static int firstMissingPositive_final(int[] nums) {
+        // n = nums.length
+        //因为结果 这个 第一个缺失的正数 一定落在 [1,n+1]; 恰好我们可以利用nums的索引做hash
+        //所以我们只需要 第一遍 遍历数组 把[1,n+1]的数字放在 [0,n]索引上
+        //第二遍 如果 index!=index+1 即没有该有的数 那么index+1就是结果
+        //否则 全都匹配的话 缺失的第一个正整数就是 n+1
+
+        int n = nums.length;
+        for (int i = 0; i < n; i++) {
+            //需要换的条件是
+            //1 当前的 nums[i]!=i+1 所以要把 nums[i]放到该到的地方
+            //2 num[i] != nums[nums[i]] 如果目标位置已经满足 不要换了 防止死循环
+            while (nums[i] != i + 1 && nums[i] >= 1 && nums[i] <= nums.length && nums[i] != nums[nums[i] - 1]) {
+                int temp = nums[i];
+                nums[i] = nums[nums[i] - 1];
+                nums[temp - 1] = temp;
+            }
+        }
+        for (int i = 0; i < n; i++) {
+            if (i + 1 != nums[i]) {
+                return i + 1;
+            }
+        }
+        return n + 1;
+
+    }
+
+    public static void main(String[] args) {
+        System.out.println(firstMissingPositive_final(new int[]{3, 4, -1, 1}));
+
+
+    }
+
 
     // O(n) time and uses constant extra space.
 
@@ -105,11 +141,11 @@ public class DYQ_41_FirstMissingPositive_hard {
         return len + 1;
     }
 
-    public static void main(String[] args) {
-        DYQ_41_FirstMissingPositive_hard dyq_41_firstMissingPositive_hard = new DYQ_41_FirstMissingPositive_hard();
-//        System.out.println(dyq_41_firstMissingPositive_hard.binarySearchNums(new int[]{0, 1, 2}, 3));
-
-        dyq_41_firstMissingPositive_hard.firstMissingPositive3(new int[]{3, 4, -1, 1});
-
-    }
+//    public static void main(String[] args) {
+//        DYQ_41_FirstMissingPositive_hard dyq_41_firstMissingPositive_hard = new DYQ_41_FirstMissingPositive_hard();
+////        System.out.println(dyq_41_firstMissingPositive_hard.binarySearchNums(new int[]{0, 1, 2}, 3));
+//
+//        dyq_41_firstMissingPositive_hard.firstMissingPositive3(new int[]{3, 4, -1, 1});
+//
+//    }
 }

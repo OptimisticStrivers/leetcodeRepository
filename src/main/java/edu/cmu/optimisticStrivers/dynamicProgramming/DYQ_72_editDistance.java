@@ -31,7 +31,6 @@ public class DYQ_72_editDistance {
         for (int j = 1; j <= len2; j++) {
             dp[0][j] = j;
         }
-
         for (int i = 1; i <= len1; i++) {
             for (int j = 1; j <= len2; j++) {
                 if (word1.charAt(i - 1) == word2.charAt(j - 1)) {

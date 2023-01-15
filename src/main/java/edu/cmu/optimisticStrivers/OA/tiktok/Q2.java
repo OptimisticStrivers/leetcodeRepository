@@ -10,6 +10,25 @@ package edu.cmu.optimisticStrivers.OA.tiktok;
 public class Q2 {
 
     public static void main(String[] args) {
-        System.out.println("Q2");
+        int m = 2;
+        int n = 7;
+        int[][] a = new int[][]{
+                {0, 2}, {4, 4}, {6, 6}
+        };
+        int[] diff = new int[n + 1];
+        for (int[] ints : a) {
+            diff[ints[0]]++;
+            diff[ints[1] + 1]--;
+        }
+        int sum = 0;
+        int count = 0;
+        for (int i = 0; i < 7; i++) {
+            sum += diff[i];
+            if (sum == 0) {
+                count++;
+            }
+        }
+        System.out.println(count);
     }
+
 }

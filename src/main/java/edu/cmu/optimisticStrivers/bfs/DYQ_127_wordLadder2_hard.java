@@ -11,7 +11,9 @@ import java.util.*;
  */
 public class DYQ_127_wordLadder2_hard {
 
-//    https://leetcode.cn/problems/word-ladder-ii/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by-3-3/
+
+    //bfs建图 dfs找路径
+    //必须自下而上 dfs 避免非必要路径
 //    https://leetcode.cn/problems/word-ladder-ii/solution/by-mao-mao-ab-f5ho/
 
 
@@ -42,15 +44,12 @@ public class DYQ_127_wordLadder2_hard {
     }
 
     public boolean bfs(String beginWord, String endWord, List<String> wordList) {
-        Set<String> dic = new HashSet<>();
-        for (String word : wordList) {
-            dic.add(word);
-        }
+        Set<String> dic = new HashSet<>(wordList);
         if (!dic.contains(endWord)) return false;
-        boolean find = false;
+        boolean find = false; //只要找到了，就把那一层的bfs跑完即可
         Queue<String> queue = new LinkedList<>();
         queue.offer(beginWord);
-        Set<String> marked = new HashSet<>();
+        Set<String> marked = new HashSet<>(); //标记的是 是否遍历过
         marked.add(beginWord);
         while (!queue.isEmpty()) {
             int size = queue.size();
@@ -60,15 +59,11 @@ public class DYQ_127_wordLadder2_hard {
 //                List<String> next = new ArrayList<>();
                 ArrayList<String> neighbors = getNeighbors(from, dic);
                 for (String to : neighbors) {
-                    if (!marked.contains(to)) {
-                        // 同下一层 还是要更新edge的 无论是否会进queue两次
-                        // to froms 因为我们要找到所有路径
+                    if (!marked.contains(to)) {  //marked是标记的上面层的 新的一层在下面会通过levelmarked统一加入到marked里面
                         List<String> froms = edgeTo.getOrDefault(to, new ArrayList<>());
                         froms.add(from);
                         edgeTo.put(to, froms);
-                        //同一下层 进过queue的 就不再进了
-                        if (!levelMarked.contains(to)) { //！！这个levelmark的作用其实就是 为了一会儿加到marked里面
-                            //用edgeTo没办法区分是不是新的着一层
+                        if (!levelMarked.contains(to)) { //去掉同层的to
                             levelMarked.add(to);
                             queue.offer(to);
                         }
@@ -86,10 +81,9 @@ public class DYQ_127_wordLadder2_hard {
     private ArrayList<String> getNeighbors(String node, Set<String> dict) {
         ArrayList<String> res = new ArrayList<String>();
         char chs[] = node.toCharArray();
-
         for (char ch = 'a'; ch <= 'z'; ch++) {
             for (int i = 0; i < chs.length; i++) {
-                if (chs[i] == ch)
+                if (chs[i] == ch) //必须换一个字母
                     continue;
                 char old_ch = chs[i];
                 chs[i] = ch;
@@ -102,58 +96,6 @@ public class DYQ_127_wordLadder2_hard {
         }
         return res;
     }
-
-
-//    public boolean bfs(String beginWord, String endWord, List<String> wordList) {
-//        Set<String> dic = new HashSet<>();
-//        for (String word : wordList) {
-//            dic.add(word);
-//        }
-//        if (!dic.contains(endWord)) return false;
-//        boolean find = false;
-//        Queue<String> queue = new LinkedList<>();
-//        queue.offer(beginWord);
-//        Set<String> marked = new HashSet<>();
-//        marked.add(beginWord);
-//        while (!queue.isEmpty()) {
-//            int size = queue.size();
-//            Set<String> levelMarked = new HashSet<>();
-//            for (int k = 0; k < size; k++) {
-//                String from = queue.poll();
-////                List<String> next = new ArrayList<>();
-//                char[] arr = from.toCharArray();
-//                for (int i = 0; i < arr.length; i++) {
-//                    char old = arr[i];
-//                    for (char j = 'a'; j <= 'z'; j++) {
-//                        if (j != old) {
-//                            arr[i] = j;
-//                            String to = String.valueOf(arr);
-//                            //上层和上上层 出现过的 都不会再出现了
-//                            if (dic.contains(to) && !marked.contains(to)) {
-//                                // 同下一层 还是要更新edge的 无论是否会进queue两次
-//                                // to froms 因为我们要找到所有路径
-//                                List<String> froms = edgeTo.getOrDefault(to, new ArrayList<>());
-//                                froms.add(from);
-//                                edgeTo.put(to, froms);
-//                                //同一下层 进过queue的 就不再进了
-//                                if (!levelMarked.contains(to)) { //！！这个levelmark的作用其实就是 为了一会儿加到marked里面
-//                                    //用edgeTo没办法区分是不是新的着一层
-//                                    levelMarked.add(to);
-//                                    queue.offer(to);
-//                                }
-//                                if (to.equals(endWord)) find = true;
-//                            }
-//                        }
-//                    }
-//                    arr[i] = old;
-//                }
-//            }
-//            marked.addAll(levelMarked);
-//            levelMarked.clear();
-//            if (find) break;
-//        }
-//        return find;
-//    }
 
 
 }

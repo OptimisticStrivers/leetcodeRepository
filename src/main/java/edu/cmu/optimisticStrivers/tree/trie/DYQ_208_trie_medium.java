@@ -93,6 +93,7 @@ public class DYQ_208_trie_medium {
 
     public boolean search1(String s) {
         TrieNode temp = root;
+
         for (int i = 0; i < s.length(); i++) {
             int c = s.charAt(i) - 'a';
             if (temp.tns[c] == null) {

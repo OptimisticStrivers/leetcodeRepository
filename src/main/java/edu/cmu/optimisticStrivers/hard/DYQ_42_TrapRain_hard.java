@@ -93,4 +93,15 @@ public class DYQ_42_TrapRain_hard {
         }
         return res;
     }
+
+
+    public static void main(String[] args) {
+        char a = (char)'0' + 1;
+
+        char b = 'a' + 1;
+        int digit = 1;
+        char c = (char) (digit < 10 ?  ('0' + digit) : ('a' + digit - 10));
+
+        System.out.println(b);
+    }
 }

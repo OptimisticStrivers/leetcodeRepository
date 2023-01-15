@@ -44,7 +44,7 @@ public class DYQ_25_reverseKGroup_hard {
                     temp = temp.next;
                     if (curNum == k) break;
                 }
-                if (curNum < k) {
+                if (curNum < k) { //如果节点总数不是 k 的整数倍，那么请将最后剩余的节点保持原有顺序。
                     pre.next = head;
                     break;
                 }
@@ -52,7 +52,7 @@ public class DYQ_25_reverseKGroup_hard {
                     pre.next = stack.pop();
                     pre = pre.next;
                 }
-                pre.next = temp; //temp是下一次的第一个，当然也可能是null
+//                pre.next = temp; //temp是下一次的第一个，当然也可能是null
                 head = temp;
             }
             return dummy.next;
