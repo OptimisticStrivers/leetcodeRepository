@@ -19,20 +19,21 @@ public class DYQ_78_Subsets_medium {
         List<List<Integer>> res = new ArrayList<>();
         Deque<Integer> path = new ArrayDeque<>();
         int n = nums.length;
-        dfs(res,path,n,0,0,nums);
+        dfs(res, path, n, 0, 0, nums);
         return res;
     }
-    public void dfs(List<List<Integer>> res, Deque<Integer> path, int n, int depth, int index, int[] nums){
+
+    public void dfs(List<List<Integer>> res, Deque<Integer> path, int n, int depth, int index, int[] nums) {
         res.add(new ArrayList<>(path));
-        if(depth==n){
+        if (depth == n) {
             return;
         }
-        for (int j = 0; j < n ; j++) {
-            if(j<index){
+        for (int j = 0; j < n; j++) {
+            if (j < index) {
                 continue;
             }
             path.addLast(nums[j]);
-            dfs(res,path,n,depth+1,j+1,nums);
+            dfs(res, path, n, depth + 1, j + 1, nums);
             path.removeLast();
         }
     }
@@ -82,8 +83,8 @@ public class DYQ_78_Subsets_medium {
         List<List<Integer>> list1 = new ArrayList<>();
         List<Integer> list0 = new ArrayList<>();
         list0.add(1);
-        list1.add( list0);
-        list1.add( new ArrayList<>(list0));
+        list1.add(list0);
+        list1.add(new ArrayList<>(list0));
         System.out.println(list1.size());
         list1.get(0).remove(0);
 

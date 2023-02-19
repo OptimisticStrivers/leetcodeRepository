@@ -29,9 +29,8 @@ public class DYQ_292_nimGame_easy {
     //所以这个n%(3+1) != 0 要必赢的前提也是 先手
     //先手就能先拿那个余数，然后把n%(3+1) == 0 这个4的倍数的先手必输条件留给别2
     public boolean canWinNim(int n) {
-        return n%(3+1) != 0;
+        return n % (3 + 1) != 0;
     }
-
 
 
 //

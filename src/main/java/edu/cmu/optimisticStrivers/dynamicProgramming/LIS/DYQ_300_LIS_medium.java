@@ -1,4 +1,4 @@
-package edu.cmu.optimisticStrivers.dynamicProgramming.dpANDbinary;
+package edu.cmu.optimisticStrivers.dynamicProgramming.LIS;
 
 import java.util.Arrays;
 

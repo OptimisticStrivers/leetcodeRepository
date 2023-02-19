@@ -29,7 +29,7 @@ public class DYQ_438_findAnagrams_medium {
         if (Arrays.equals(sInt, pInt)) { //顺序相同 且元素值相同
             res.add(0);
         }
-        for (int i = n2; i < n1; i++) { //从第一个pattern往后走吧
+        for (int i = n2; i < n1; i++) { //从第一个pattern的下一个字母走
             sInt[s.charAt(i - n2) - 'a']--;
             sInt[s.charAt(i) - 'a']++;
             if (Arrays.equals(sInt, pInt)) {

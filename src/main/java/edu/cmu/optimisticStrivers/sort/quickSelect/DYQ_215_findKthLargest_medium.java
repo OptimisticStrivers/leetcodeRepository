@@ -52,6 +52,12 @@ public class DYQ_215_findKthLargest_medium {
     }
 
     private int quickSort(int[] nums, int k, int left, int right) {
+
+        System.out.println();
+        System.out.println(Arrays.toString(nums));
+        System.out.println(left + " " + right);
+        System.out.println();
+
         int i = left;
         int j = right;
         int pivot = nums[left];
@@ -61,10 +67,14 @@ public class DYQ_215_findKthLargest_medium {
             swap(nums, i, j);
         }
         swap(nums, left, i);
-        if (i > k) return quickSort(nums, k, left, i - 1);
-        if (i < k) return quickSort(nums, k, i + 1, right);
-        //index k前面就是 k个最大元素 但是不知道谁是最大
-        return nums[k];
+        //i是第i+1大的数
+
+        if (i + 1 == k) {
+            return nums[i];
+        }
+        if (i + 1 > k) return quickSort(nums, k, left, i - 1);
+        if (i + 1 < k) return quickSort(nums, k, i + 1, right);
+        return -1;
     }
 
 
@@ -74,5 +84,29 @@ public class DYQ_215_findKthLargest_medium {
         nums[j] = tmp;
     }
 
+    public int findKthLargest3(int[] nums, int k) {
+        //找到最大值和最小值
+        int max = nums[0], min = nums[0];
+        for (int num : nums) {
+            if (max < num) max = num;
+            if (min > num) min = num;
+        }
+        //根据最大值和最小值确定计数范围
+        int[] count = new int[max - min + 1];
+        for (int num : nums) {
+            count[num - min]++;
+        }
+        //寻找第k大的数字
+        for (int i = max - min; i >= 0; i--) {
+            k -= count[i];
+            if (k <= 0) return i + min;
+        }
+        return nums[0];
+    }
+
+    public static void main(String[] args) {
+        DYQ_215_findKthLargest_medium dyq_215_findKthLargest_medium = new DYQ_215_findKthLargest_medium();
+        System.out.println(dyq_215_findKthLargest_medium.findKthLargest2(new int[]{3, 2, 1, 5, 6, 4}, 2));
+    }
 
 }

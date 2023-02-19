@@ -19,22 +19,22 @@ public class DYQ_40_CombinationSum_medium {
         List<List<Integer>> res = new ArrayList<>();
         Deque<Integer> path = new ArrayDeque<>();
         Arrays.sort(candidates);
-        dfs(candidates,target,res,path,0,0);
+        dfs(candidates, target, res, path, 0, 0);
         return res;
     }
 
     private void dfs(int[] candidates, int target, List<List<Integer>> res, Deque<Integer> path, int currentSum, int start) {
-        if(currentSum == target) {
+        if (currentSum == target) {
             res.add(new ArrayList<>(path));
             return;
         }
         for (int i = start; i < candidates.length; i++) {
-            if(currentSum+candidates[i]>target) return; //剪枝
+            if (currentSum + candidates[i] > target) return; //剪枝
             //注意这里大于start是非常秒的，同一层的时候，用过的不可以再用了
-            if(i>start && candidates[i]==candidates[i-1]) continue;
+            if (i > start && candidates[i] == candidates[i - 1]) continue;
             path.addLast(candidates[i]);
             // dfs 里面 start 是 i+1， 因为选过的在下一层不可以再选，但是不同index相同数字在下一层还是可以用的。
-            dfs(candidates,target,res,path,currentSum+candidates[i],i+1);
+            dfs(candidates, target, res, path, currentSum + candidates[i], i + 1);
             path.removeLast();
         }
     }

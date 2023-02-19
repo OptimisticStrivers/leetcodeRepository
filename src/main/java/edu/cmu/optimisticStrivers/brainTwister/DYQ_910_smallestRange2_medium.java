@@ -1,4 +1,4 @@
-package edu.cmu.optimisticStrivers.array;
+package edu.cmu.optimisticStrivers.brainTwister;
 
 import java.util.Arrays;
 
@@ -11,6 +11,7 @@ import java.util.Arrays;
  */
 public class DYQ_910_smallestRange2_medium {
 
+//    https://leetcode.cn/problems/smallest-range-ii/solution/tai-nan-liao-zhi-neng-hua-tu-ping-zhi-jue-by-user8/
     public int smallestRangeII(int[] nums, int k) {
         int len = nums.length;
         Arrays.sort(nums); //从小到大的顺序。

@@ -1,4 +1,4 @@
-package edu.cmu.optimisticStrivers.hard;
+package edu.cmu.optimisticStrivers.stack.monotonousStack;
 
 import java.util.Stack;
 

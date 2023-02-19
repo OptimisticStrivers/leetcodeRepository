@@ -13,6 +13,7 @@ import java.util.List;
  */
 public class DYQ_18_4sum_medium {
 
+    //其实就是3sum的基础上 再外层循环再卡一个数
     public List<List<Integer>> fourSum(int[] nums, int target) {
         List<List<Integer>> res = new ArrayList<>();
         if (nums == null || nums.length < 4) return res;

@@ -11,21 +11,23 @@ public class DYQ_283_moveZeros_easy {
 
 //    你能尽量减少完成的操作次数吗？
 
-    //如果要减少操作次数 即
-    //遍历数组，遇到非0数，前面有几个0就往前面移动几格
-
+    //思路：设置一个index，表示非0数的个数，循环遍历数组，
+    // 如果不是0，将非0值移动到第index位置,然后index + 1
+    //遍历结束之后，index值表示为非0的个数，再次遍历，从index位置后的位置此时都应该为0
     public void moveZeroes_final(int[] nums) {
-        int n=nums.length;
-        int t=0;
-        for(int i=0;i<n;i++){
-            if(nums[i]==0){
-                ++t;
-            }else{
-                nums[i-t]=nums[i];
+        if (nums == null || nums.length <= 1) {
+            return;
+        }
+        int index = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                nums[index] = nums[i];
+                index++;
             }
         }
-        for(int i=n-1;i>n-t-1;--i){
-            nums[i]=0;
+
+        for (int i = index; i < nums.length; i++) {
+            nums[i] = 0;
         }
     }
 

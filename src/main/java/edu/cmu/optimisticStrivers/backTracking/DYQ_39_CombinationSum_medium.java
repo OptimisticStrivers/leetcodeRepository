@@ -39,6 +39,7 @@ public class DYQ_39_CombinationSum_medium {
 //        }
 //    }
 
+    //题目已经保证了 candidates 里面的数字不同
 
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> res = new ArrayList<>();

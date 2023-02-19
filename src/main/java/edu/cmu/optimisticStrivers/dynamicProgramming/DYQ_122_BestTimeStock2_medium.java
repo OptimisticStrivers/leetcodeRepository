@@ -44,7 +44,7 @@ public class DYQ_122_BestTimeStock2_medium {
             }
             System.out.println(i + " " + prices[i] + " " + buyingPrice);
             totalProfit += prices[i] - buyingPrice;
-            if (i + 1 < prices.length) buyingPrice = prices[i + 1];
+            if (i + 1 < prices.length) buyingPrice = prices[i + 1]; //不可能一天即买 又买 没有意义
         }
         return totalProfit;
     }

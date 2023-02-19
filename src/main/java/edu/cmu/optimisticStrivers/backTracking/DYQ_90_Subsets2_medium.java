@@ -16,23 +16,23 @@ public class DYQ_90_Subsets2_medium {
         Deque<Integer> path = new ArrayDeque<>();
         int n = nums.length;
         Arrays.sort(nums);
-        dfs(res,path,nums,n,0,true);
+        dfs(res, path, nums, n, 0, true);
         return res;
     }
 
-    private static void dfs(List<List<Integer>> res, Deque<Integer> path, int[] nums, int n, int start,boolean newDepth) {
+    private static void dfs(List<List<Integer>> res, Deque<Integer> path, int[] nums, int n, int start, boolean newDepth) {
         res.add(new ArrayList<>(path));
         for (int i = start; i < n; i++) {
-            if(!newDepth && i>0 && nums[i]==nums[i-1]) continue;
+            if (!newDepth && i > 0 && nums[i] == nums[i - 1]) continue;
             path.addLast(nums[i]);
-            dfs(res,path,nums,n,i+1,true);
+            dfs(res, path, nums, n, i + 1, true);
             path.removeLast();
             newDepth = false;
         }
     }
 
     public static void main(String[] args) {
-        int[] a = new int[]{1,2,2};
+        int[] a = new int[]{1, 2, 2};
         subsetsWithDup(a);
     }
 

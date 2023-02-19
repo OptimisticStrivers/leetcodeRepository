@@ -9,6 +9,34 @@ package edu.cmu.optimisticStrivers.array;
  */
 public class DYQ_581_findUnsortedSubarray_medium {
 
+//    很简单，如果最右端的一部分已经排好序，这部分的每个数都比它左边的最大值要大，
+//    同理，如果最左端的一部分排好序，这每个数都比它右边的最小值小。所以我们从左往右遍历，
+//    如果i位置上的数比它左边部分最大值小，则这个数肯定要排序， 就这样找到右端不用排序的部分，
+//    同理找到左端不用排序的部分，它们之间就是需要排序的部分
+
+    public int findUnsortedSubarray_final(int[] arr) {
+        if(arr == null || arr.length < 2){
+            return 0;
+        }
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
+        int R = 0;
+        int L = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if(max > arr[i]) {
+                R = i;
+            }
+            max = Math.max(max, arr[i]);
+        }
+        for (int i = arr.length - 1; i >= 0; i--) {
+            if(min < arr[i]) {
+                L = i;
+            }
+            min = Math.min(min, arr[i]);
+        }
+        return R == L ? 0 : R - L + 1;
+    }
+
     public static int findUnsortedSubarray(int[] nums) {
         if(nums==null || nums.length==0) return 0;
         int rightBound = -1;

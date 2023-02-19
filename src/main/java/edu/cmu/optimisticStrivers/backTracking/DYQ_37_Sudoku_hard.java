@@ -49,7 +49,7 @@ public class DYQ_37_Sudoku_hard {
                 return true;
             }
         }
-        if(board[i][j] == '.' ){ //这个格子是空着的
+        if (board[i][j] == '.') { //这个格子是空着的
             for (int k = 1; k <= 9; k++) {
                 //都没有出现过
                 if (!rows[i][k - 1] && !columns[j][k - 1] && !nines[i / 3][j / 3][k - 1]) {
@@ -70,8 +70,8 @@ public class DYQ_37_Sudoku_hard {
                     nines[i / 3][j / 3][num - 1] = false;
                 }
             }
-        }else {
-            return backtrack(board, rows, columns, nines, i, j+ 1);
+        } else {
+            return backtrack(board, rows, columns, nines, i, j + 1);
         }
 
         return true;
@@ -80,7 +80,7 @@ public class DYQ_37_Sudoku_hard {
 
     public static void main(String[] args) {
 
-        int a = '9'-'0';
+        int a = '9' - '0';
         System.out.println(a);
 //        char c = (char)a;
         char c = (char) a;

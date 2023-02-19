@@ -71,30 +71,30 @@ public class DYQ_25_reverseKGroup_hard {
 //        pre          tail  head
 //        dummy    2     3    1     4     5
 
-        public ListNode reverseKGroup1(ListNode head, int k) {
-            ListNode dummy = new ListNode(0);
-            dummy.next = head;
-            ListNode pre = dummy;
-            ListNode tail = dummy;
-            while (true) {
-                int count = 0;
-                while (tail != null && count != k) {
-                    count++;
-                    tail = tail.next;
+            public ListNode reverseKGroup1(ListNode head, int k) {
+                ListNode dummy = new ListNode(0);
+                dummy.next = head;
+                ListNode pre = dummy;
+                ListNode tail = dummy;
+                while (true) {
+                    int count = 0;
+                    while (tail != null && count != k) {
+                        count++;
+                        tail = tail.next;
+                    }
+                    if (tail == null) break;
+                    ListNode head1 = pre.next;
+                    while (pre.next != tail) {  //很关键，用1 2 3来模拟，其实就是把1放在3后面，但是pre的链子还不能断
+                        ListNode cur = pre.next;
+                        pre.next = cur.next;
+                        cur.next = tail.next;
+                        tail.next = cur;
+                    }
+                    pre = head1;
+                    tail = head1;
                 }
-                if (tail == null) break;
-                ListNode head1 = pre.next;
-                while (pre.next != tail) {  //很关键，用1 2 3来模拟，其实就是把1放在3后面，但是pre的链子还不能断
-                    ListNode cur = pre.next;
-                    pre.next = cur.next;
-                    cur.next = tail.next;
-                    tail.next = cur;
-                }
-                pre = head1;
-                tail = head1;
+                return dummy.next;
             }
-            return dummy.next;
-        }
 
 
 //        public static void main(String[] args) {

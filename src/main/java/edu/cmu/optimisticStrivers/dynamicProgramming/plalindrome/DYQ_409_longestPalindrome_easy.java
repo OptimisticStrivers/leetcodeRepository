@@ -47,7 +47,6 @@ public class DYQ_409_longestPalindrome_easy {
         int ans = 0;
         //3. pair char
         for (int i = 0; i < s.length(); i++) {
-
             if (set.contains(s.charAt(i))) {
                 set.remove(s.charAt(i));
                 ans += 2;
@@ -55,9 +54,7 @@ public class DYQ_409_longestPalindrome_easy {
                 set.add(s.charAt(i));
             }
         }
-
         return (set.isEmpty() ? ans : ans + 1);
-
     }
 
 

@@ -58,7 +58,7 @@ public class DYQ_289_gameOfLife_medium {
                     board[i][j] = 1;
                 } else if (originState == 0 && aliveSurround == 3) {
                     board[i][j] = 1;
-                }else{
+                } else {
                     board[i][j] = 0;
                 }
             }
